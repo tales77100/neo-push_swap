@@ -6,7 +6,7 @@
 /*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 11:37:50 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/08 12:28:20 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/09 13:56:04 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,21 @@ void	aff_lst(t_list *head);
 
 void	*push_list(t_list **head, t_list *new);
 
+int		pb(t_list **a, t_list **b);
+int		pa(t_list **a, t_list **b);
 
-int	pb(t_list **a, t_list **b);
-int	pa(t_list **a, t_list **b);
+int		ra(t_list **a, int act);
+int		rb(t_list **b, int act);
+int		rr(t_list **a, t_list **b);
 
-int	ra(t_list **a);
-int	rb(t_list **b);
+int		rra(t_list **a, int act);
+int		rrb(t_list **b, int act);
+int		rrr(t_list **a, t_list **b);
 
+int		sa(t_list **a, int act);
+int		sb(t_list **b, int act);
+int		ss(t_list **a, t_list **b);
 
-int	rra(t_list **a);
-int	rrb(t_list **b);
-
-
-int	sa(t_list **a);
-int	sb(t_list **b);
-
-
-
-t_list  *pop_item(t_list **head);
+t_list	*pop_item(t_list **head);
 
 #endif

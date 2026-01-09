@@ -6,7 +6,7 @@
 /*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 12:26:24 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/08 12:29:10 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/09 13:57:36 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*make_list(char **v)
 {
-	int	i;
+	int		i;
 	t_list	*final;
 
 	final = NULL;
@@ -34,10 +34,10 @@ t_list	*make_list(char **v)
 
 int	main(int i, char **v)
 {
-	if (i < 1)
+	if (i <= 1)
 		return (0);
-	//if (i == 2)
-		//algo(make_list_one(v[1]));
-	//else
+	/*if (i == 2)
+		algo(make_list_one(v[1]));
+	else*/
 	algo(make_list(v));
 }

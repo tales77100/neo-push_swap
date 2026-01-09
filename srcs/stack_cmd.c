@@ -6,15 +6,15 @@
 /*   By: jsantini <jsantini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:09:04 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/08 15:09:05 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/09 13:58:04 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list *pop_item(t_list **head)
+t_list	*pop_item(t_list **head)
 {
-	t_list *item;
+	t_list	*item;
 
 	if (!head || !(*head))
 		return (NULL);
@@ -47,4 +47,3 @@ void	aff_lst(t_list *head)
 	}
 	return ;
 }
-

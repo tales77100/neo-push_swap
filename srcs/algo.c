@@ -6,7 +6,7 @@
 /*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 12:29:24 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/08 15:03:35 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/09 06:01:12 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	algo(t_list *a)
 {
 	aff_lst(a);
 	ft_printf("\n");
-	ra(&a);
+	rra(&a);
 	aff_lst(a);
 	ft_printf("\n");
-	rra(&a);
+	ra(&a);
 	aff_lst(a);
 	return ;
 }

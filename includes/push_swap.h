@@ -16,5 +16,27 @@
 # include "../libft/libft.h"
 
 void	algo(t_list *head);
+void	aff_lst(t_list *head);
+
+void	*push_list(t_list **head, t_list *new);
+
+
+int	pb(t_list **a, t_list **b);
+int	pa(t_list **a, t_list **b);
+
+int	ra(t_list **a);
+int	rb(t_list **b);
+
+
+int	rra(t_list **a);
+int	rrb(t_list **b);
+
+
+int	sa(t_list **a);
+int	sb(t_list **b);
+
+
+
+t_list  *pop_item(t_list **head);
 
 #endif

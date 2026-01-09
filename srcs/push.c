@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jsantini <jsantini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/08 12:29:24 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/08 15:03:35 by jsantini         ###   ########.fr       */
+/*   Created: 2026/01/08 15:08:30 by jsantini          #+#    #+#             */
+/*   Updated: 2026/01/08 15:08:33 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	algo(t_list *a)
+int	pb(t_list **a, t_list **b)
 {
-	aff_lst(a);
-	ft_printf("\n");
-	ra(&a);
-	aff_lst(a);
-	ft_printf("\n");
-	rra(&a);
-	aff_lst(a);
-	return ;
+	if (push_list(b, pop_item(a)) == NULL)
+		return (-1);
+	ft_printf("pb\n");
+	return (1);
 }
+
+int	pa(t_list **a, t_list **b)
+{
+	if (push_list(a, pop_item(b)) == NULL)
+		return (-1);
+	ft_printf("pa\n");
+	return (1);
+}
+

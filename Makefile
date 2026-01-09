@@ -1,6 +1,10 @@
-FILES = srcs/main.c \
-	srcs/algo.c	
-	
+FILES = srcs/main.c	\
+	srcs/algo.c	\
+	srcs/push.c	\
+	srcs/rotate.c	\
+	srcs/rrotate.c	\
+	srcs/stack_cmd.c\
+	srcs/swap.c	\
 	
 	
 OBJETS = $(FILES:.c=.o)

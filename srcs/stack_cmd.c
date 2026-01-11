@@ -6,7 +6,7 @@
 /*   By: jsantini <jsantini@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 15:09:04 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/09 17:08:38 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/11 15:14:46 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	aff_lst(t_list *head)
 {
 	while (head)
 	{
-		ft_printf("%p --> |%d| price: %d target: %p --> |%d|\n", head, head->value, head->price, head->target, head->target->value);
+		ft_printf("%p --> |%d| price: %d || target: %p --> |%d|\n", head, head->value, head->price, head->target, head->target->value);
 		head = head->next;
 	}
 	return ;

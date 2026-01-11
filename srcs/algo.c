@@ -6,7 +6,7 @@
 /*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 12:29:24 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/09 19:31:09 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/11 15:27:29 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void	sorting(t_list *a, t_list *b)
 	sort_three(&a);
 	get_price(a);
 	get_price(b);
-	aff(a, b);
+	while (ft_lstsize(b) > 0)
+		pa(&a, &b);
+	//aff(a, b);
 	return ;
 }
 

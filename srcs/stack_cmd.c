@@ -103,6 +103,7 @@ void	get_price(t_list *head)
 			head->price = (size_l - i + 1);
 		else
 			head->price = i;
+		head->place = i - 1;
 		i++;
 		head = head->next;
 	}

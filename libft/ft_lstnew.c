@@ -23,5 +23,6 @@ t_list	*ft_lstnew(int content)
 	final->value = content;
 	final->target = final;
 	final->price = -1;
+	final->place = -1;
 	return (final);
 }

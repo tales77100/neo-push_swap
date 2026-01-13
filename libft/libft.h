@@ -21,10 +21,11 @@
 //----list chaine----//
 typedef struct s_list
 {
-	int			value;
 	struct s_list	*next;
 	struct s_list	*target;
+	int			value;
 	int			price;
+	int			place;
 }	t_list;
 //-------------------//
 

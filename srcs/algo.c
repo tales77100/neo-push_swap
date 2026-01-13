@@ -6,7 +6,7 @@
 /*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 12:29:24 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/12 11:53:01 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:44:53 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,30 @@ void	sort_three(t_list **h)
 	return ;
 }
 
-void	sorting(t_list **a, t_list **b)
+void	sorting(t_list **a, t_list **b, int size_l)
 {
+	int	loop;
+
 	sort_three(a);
 	get_price(*a);
 	get_price(*b);
+	//aff(*a, *b);
 	while (ft_lstsize(*b) > 0)
+	{
+		loop = -1;
+		if ((*b)->target->place >= size_l / 2)
+		{
+			loop = (*b)->target->price;
+			while ((*b)->target->price-- >= 1)
+				rra(a, 0);
+		}
 		pa(a, b);
-	aff(*a, *b);
+		while (loop-- >= 0)
+			ra(a, 0);
+		get_price(*a);
+		get_price(*b);
+		//aff(*a, *b);
+	}
 	return ;
 }
 
@@ -57,7 +73,8 @@ void	smart_push(int size_l, t_list **a, t_list **b)
 	while (size_l-- > 3)
 	{
 		pb(a, b);
-		//if (*b && ) <-- suite de condition pcq je suis debile
+		if ((*b)->next && (*b)->value < (*b)->next->value)
+			sb(b, 0);
 	}
 	return ;
 }
@@ -80,7 +97,8 @@ void	algo(t_list *a)
 	if (size_l == 3)
 		return (sort_three(&a));
 	smart_push(size_l, &a, b);
-	sorting(&a, b);
+	sorting(&a, b, size_l);
+	aff(a, *b);
 	ft_lstclear(&a, &free);
 	return ;
 }

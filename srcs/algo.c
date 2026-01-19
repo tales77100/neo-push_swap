@@ -6,7 +6,7 @@
 /*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 12:29:24 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/18 19:56:06 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/19 12:43:35 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	aff(t_list *a, t_list *b)
 
 }
 
+
 void	index_stack(t_list *a)
 {
 	int	i;
@@ -28,7 +29,7 @@ void	index_stack(t_list *a)
 	while (a->target->value > a->value)
 		a = a->target;
 	i = 0;
-	a->index_sort = a->size;
+	a->index_sort = a->size - 1;
 	a = a->target;
 	while (a->target->value > a->value)
 	{
@@ -79,7 +80,6 @@ int	get_max_byte(t_list *head)
 	int	i_max;
 	int	i;
 
-	index_stack(head);
 	if (!head)
 		return (0);
 	i_max = highest_in_stack(head)->index_sort;
@@ -110,7 +110,7 @@ void	second_sort(t_list **a, t_list **b, int max, int i)
 		else
 			pa(a, b);
 	}
-	if (is_sort(*a) == 0)
+	if (is_sort(*a) == 1)
 		while (*b)
 			pa(a, b);
 
@@ -123,7 +123,7 @@ void	sorting(t_list **a, t_list **b)
 	int max_bits;
 
 	size = ft_lstsize(*a);
-	max_bits = get_max_byte(*a) + 2;
+	max_bits = get_max_byte(*a);
 	i = 0;
 	while (i <= max_bits)
 	{
@@ -142,6 +142,31 @@ void	sorting(t_list **a, t_list **b)
 		pa(a, b);
 }
 
+void	sort_five(t_list **a, t_list **b)
+{
+	t_list	*max;
+
+	while (ft_lstsize(*a) > 3)
+	{
+		get_price(*a);
+		max = highest_in_stack(*a);
+		while (max != *a)
+		{
+			if (max->place > max->size / 2)
+				rra(a, 0);
+			else
+				ra(a, 0);
+		}
+		pb(a, b);
+	}
+	sort_three(a);
+	pa(a, b);
+	ra(a, 0);
+	pa(a, b);
+	ra(a, 0);
+
+}
+
 void	algo(t_list *a)
 {
 	t_list *b[1];
@@ -152,7 +177,7 @@ void	algo(t_list *a)
 		return ;
 	get_target(a);
 	size_l = ft_lstsize(a);
-	if (size_l == 1)
+	if (size_l == 1 || is_sort(a))
 		return ;
 	if (size_l == 2 && a->value > a->next->value)
 		return ((void)sa(&a, 0));
@@ -160,6 +185,8 @@ void	algo(t_list *a)
 		return ;
 	if (size_l == 3)
 		return (sort_three(&a));
+	if (size_l == 5)
+		return (sort_five(&a, b));
 	index_stack(a);
 	sorting(&a, b);
 	//aff(a, *b);

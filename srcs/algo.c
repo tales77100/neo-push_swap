@@ -6,7 +6,7 @@
 /*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 12:29:24 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/16 14:54:38 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/18 19:56:06 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,25 @@ void	aff(t_list *a, t_list *b)
 	aff_lst(b);
 
 }
+
+void	index_stack(t_list *a)
+{
+	int	i;
+
+	get_price(a);
+	while (a->target->value > a->value)
+		a = a->target;
+	i = 0;
+	a->index_sort = a->size;
+	a = a->target;
+	while (a->target->value > a->value)
+	{
+		a->index_sort = i;
+		a = a->target;
+		i++;
+	}
+}
+
 
 void	sort_three(t_list **h)
 {
@@ -41,18 +60,6 @@ void	sort_three(t_list **h)
 	return ;
 }
 
-int	target_in_a(t_list *a, t_list *node)
-{
-	while (a)
-	{
-		if (a == node)
-			return (1);
-		a = a->next;
-	}
-	return (0);
-}
-
-
 t_list	*highest_in_stack(t_list *head)
 {
 	t_list	*temp;
@@ -60,66 +67,89 @@ t_list	*highest_in_stack(t_list *head)
 	temp = head;
 	while (head)
 	{
-		if (temp->value > head->value)
+		if (temp->value < head->value)
 			temp = head;
 		head = head->next;
 	}
 	return (temp);
 }
 
-
-
-void	smart_push(int size_l, t_list **a, t_list **b)
+int	get_max_byte(t_list *head)
 {
-	t_list	*highest;
-	int	max;
+	int	i_max;
+	int	i;
 
-	max = size_l;
-	while (size_l-- > 0)
+	index_stack(head);
+	if (!head)
+		return (0);
+	i_max = highest_in_stack(head)->index_sort;
+	i = 0;
+	while ((i_max >> i) != 0)
+		i++;
+	return (i);
+}
+
+int	is_sort(t_list *head)
+{
+	while (head->next && head->value < head->next->value)
+		head = head->next;
+	if (!(head->next))
+		return (1);
+	return (0);
+}
+
+void	second_sort(t_list **a, t_list **b, int max, int i)
+{
+	int	s;
+
+	s = ft_lstsize(*b);
+	while (s-- && i <= max && is_sort(*a) == 0)
 	{
-		highest = get_min(*a);
-		if (highest->place >= highest->size / 2)
-		{
-			while (*a != highest)
-				rra(a, 0);
-		}
+		if ((((*b)->index_sort >> i) & 1) == 0)
+			rb(b, 0);
 		else
-		{
-			while (*a != highest)
-				ra(a, 0);
-		}
-		get_price(*a);
-		pb(a, b);
-		
+			pa(a, b);
 	}
-	return ;
+	if (is_sort(*a) == 0)
+		while (*b)
+			pa(a, b);
+
 }
 
 void	sorting(t_list **a, t_list **b)
 {
-	//t_list	*max;
-	int	i;
+	int i;
+	int size;
+	int max_bits;
 
-	//sort_three(a);
-	get_price(*a);
-	get_price(*b);
-	//aff(*a, *b);
-	while (ft_lstsize(*b) > 0)
+	size = ft_lstsize(*a);
+	max_bits = get_max_byte(*a) + 2;
+	i = 0;
+	while (i <= max_bits)
 	{
-		i = 0;
-		pa(a, b);
-		//aff(*a, *b);
-		get_price(*b);
-		get_price(*a);
+		size = ft_lstsize(*a);
+		while (size-- && is_sort(*a) == 0)
+		{
+			if ((((*a)->index_sort >> i) & 1) == 0)
+				pb(a, b);
+			else
+				ra(a, 0);
+		}
+		i++;
+		second_sort(a, b, max_bits, i);
 	}
-	return ;
+	while (*b)
+		pa(a, b);
 }
+
 void	algo(t_list *a)
 {
 	t_list *b[1];
 	int	size_l;
 
 	*b = NULL;
+	if (!a)
+		return ;
 	get_target(a);
 	size_l = ft_lstsize(a);
 	if (size_l == 1)
@@ -130,7 +160,7 @@ void	algo(t_list *a)
 		return ;
 	if (size_l == 3)
 		return (sort_three(&a));
-	smart_push(size_l, &a, b);
+	index_stack(a);
 	sorting(&a, b);
 	//aff(a, *b);
 	ft_lstclear(&a, &free);

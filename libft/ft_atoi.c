@@ -14,8 +14,9 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	final;
-	int	neg;
+	int			final;
+	int			neg;
+	const char	*ori;
 
 	final = 0;
 	neg = 1;
@@ -27,11 +28,14 @@ int	ft_atoi(const char *nptr)
 			neg *= -1;
 		nptr++;
 	}
+	ori = nptr;
 	while (*nptr <= '9' && *nptr >= '0')
 	{
 		final *= 10;
 		final += (*nptr - '0');
 		nptr++;
+		if (final < 0 && ft_strncmp(ori, "-2147483648", 12) != 0)
+			return (0);
 	}
 	return (final * neg);
 }

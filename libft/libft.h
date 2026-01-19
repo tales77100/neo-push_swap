@@ -6,7 +6,7 @@
 /*   By: jsantini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 09:26:17 by jsantini          #+#    #+#             */
-/*   Updated: 2026/01/16 16:13:16 by jsantini         ###   ########.fr       */
+/*   Updated: 2026/01/19 18:02:03 by jsantini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include "ft_printf/includes/ft_printf.h"
+# include <limits.h>
 
 //----list chaine----//
 typedef struct s_list
@@ -81,4 +82,5 @@ t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+long	ft_strtol(char *str, char **endp);
 #endif

@@ -11,34 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	aff(t_list *a, t_list *b)
-{
-	ft_printf("----------a-----------\n");
-	aff_lst(a);
-	ft_printf("----------b-----------\n");
-	aff_lst(b);
-
-}
-
-
-void	index_stack(t_list *a)
-{
-	int	i;
-
-	get_price(a);
-	while (a->target->value > a->value)
-		a = a->target;
-	i = 0;
-	a->index_sort = a->size - 1;
-	a = a->target;
-	while (a->target->value > a->value)
-	{
-		a->index_sort = i;
-		a = a->target;
-		i++;
-	}
-}
-
 
 void	sort_three(t_list **h)
 {
@@ -49,7 +21,6 @@ void	sort_three(t_list **h)
 	top = (*h)->value;
 	mid = (*h)->next->value;
 	bas = (*h)->next->next->value;
-
 	if (top > mid && top > bas)
 		ra(h, 0);
 	else if (mid > top && mid > bas)
@@ -59,43 +30,6 @@ void	sort_three(t_list **h)
 	if (top > mid)
 		sa(h, 0);
 	return ;
-}
-
-t_list	*highest_in_stack(t_list *head)
-{
-	t_list	*temp;
-
-	temp = head;
-	while (head)
-	{
-		if (temp->value < head->value)
-			temp = head;
-		head = head->next;
-	}
-	return (temp);
-}
-
-int	get_max_byte(t_list *head)
-{
-	int	i_max;
-	int	i;
-
-	if (!head)
-		return (0);
-	i_max = highest_in_stack(head)->index_sort;
-	i = 0;
-	while ((i_max >> i) != 0)
-		i++;
-	return (i);
-}
-
-int	is_sort(t_list *head)
-{
-	while (head->next && head->value < head->next->value)
-		head = head->next;
-	if (!(head->next))
-		return (1);
-	return (0);
 }
 
 void	second_sort(t_list **a, t_list **b, int max, int i)
@@ -113,14 +47,13 @@ void	second_sort(t_list **a, t_list **b, int max, int i)
 	if (is_sort(*a) == 1)
 		while (*b)
 			pa(a, b);
-
 }
 
 void	sorting(t_list **a, t_list **b)
 {
-	int i;
-	int size;
-	int max_bits;
+	int	i;
+	int	size;
+	int	max_bits;
 
 	size = ft_lstsize(*a);
 	max_bits = get_max_byte(*a);
@@ -164,17 +97,16 @@ void	sort_five(t_list **a, t_list **b)
 	ra(a, 0);
 	pa(a, b);
 	ra(a, 0);
-
 }
 
 void	algo(t_list *a)
 {
-	t_list *b[1];
-	int	size_l;
+	t_list	*b[1];
+	int		size_l;
 
 	*b = NULL;
 	if (!a)
-		return ;
+		return (ft_putstr_fd("Error\n", 2));
 	get_target(a);
 	size_l = ft_lstsize(a);
 	if (size_l == 1 || is_sort(a))
@@ -189,7 +121,6 @@ void	algo(t_list *a)
 		return (sort_five(&a, b));
 	index_stack(a);
 	sorting(&a, b);
-	//aff(a, *b);
 	ft_lstclear(&a, &free);
 	return ;
 }

@@ -40,4 +40,10 @@ int		ss(t_list **a, t_list **b);
 
 t_list	*pop_item(t_list **head);
 
+int		is_sort(t_list *head);
+void	aff(t_list *a, t_list *b);
+void	index_stack(t_list *a);
+t_list	*highest_in_stack(t_list *head);
+int		get_max_byte(t_list *head);
+
 #endif

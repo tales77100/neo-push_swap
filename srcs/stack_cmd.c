@@ -38,16 +38,6 @@ void	*push_list(t_list **head, t_list *new)
 	return (new);
 }
 
-void	aff_lst(t_list *head)
-{
-	while (head)
-	{
-		ft_printf("%p --> |%d| price: %d || target: %p --> |%d|\n", head, head->value, head->price, head->target, head->target->value);
-		head = head->next;
-	}
-	return ;
-}
-
 t_list	*get_min(t_list *head)
 {
 	t_list	*min;

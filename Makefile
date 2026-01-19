@@ -5,6 +5,7 @@ FILES = srcs/main.c	\
 	srcs/rrotate.c	\
 	srcs/stack_cmd.c\
 	srcs/swap.c	\
+	srcs/utils.c	\
 	
 	
 OBJETS = $(FILES:.c=.o)

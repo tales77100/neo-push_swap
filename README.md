@@ -9,6 +9,7 @@ Push-Swap is a project that takes a list of integers in a stack (ie: 4 8 2 6) an
 move and having only certain commmands to move the numbers in the stack.
 
 The commands here are:
+
 pb (push the first element of a to stack b), pa (push the first element of b to stack a)
 
 sa (swap the first two element of stack a), sb (swap the first two element of stack b), ss (do sa and sb at the same time)
